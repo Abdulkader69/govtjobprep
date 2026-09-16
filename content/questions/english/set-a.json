@@ -1,0 +1,469 @@
+{
+  "source": "Set A (original, past-paper pattern)",
+  "defaults": {
+    "subject": "english",
+    "status": "reviewed",
+    "expires_at": null
+  },
+  "questions": [
+    {
+      "id": "en-pos-026",
+      "topic": "Parts of speech",
+      "difficulty": "easy",
+      "grade_bands": [
+        "11-12",
+        "13-16",
+        "17-20"
+      ],
+      "stem": "What part of speech is the word 'but' in the sentence: “He is poor but honest.”?",
+      "options": [
+        "Adjective",
+        "Adverb",
+        "Conjunction",
+        "Preposition"
+      ],
+      "answer": 2,
+      "explanation": "'But' here joins two adjectives of equal rank, so it works as a coordinating conjunction."
+    },
+    {
+      "id": "en-pos-027",
+      "topic": "Parts of speech",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "In “The child is asleep.”, the word 'asleep' is a/an —",
+      "options": [
+        "Verb",
+        "Adverb",
+        "Noun",
+        "Adjective"
+      ],
+      "answer": 3,
+      "explanation": "'Asleep' is a predicative adjective describing the subject after the linking verb 'is'."
+    },
+    {
+      "id": "en-pos-028",
+      "topic": "Parts of speech",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "What is the verb form of the word 'beauty'?",
+      "options": [
+        "Beauteous",
+        "Beautiful",
+        "Beautifully",
+        "Beautify"
+      ],
+      "answer": 3,
+      "explanation": "The suffix -fy turns the noun 'beauty' into the verb 'beautify'. 'Beautiful' is an adjective and 'beautifully' an adverb."
+    },
+    {
+      "id": "en-verb-029",
+      "topic": "Right form of verbs",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "It is high time we ___ the decision.",
+      "options": [
+        "took",
+        "take",
+        "have taken",
+        "will take"
+      ],
+      "answer": 0,
+      "explanation": "After 'it is high time', the past simple is used even though the meaning is present."
+    },
+    {
+      "id": "en-verb-030",
+      "topic": "Right form of verbs",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "If I ___ a bird, I would fly to you.",
+      "options": [
+        "will be",
+        "was",
+        "am",
+        "were"
+      ],
+      "answer": 3,
+      "explanation": "In a second conditional (unreal present), 'were' is used for all persons."
+    },
+    {
+      "id": "en-verb-031",
+      "topic": "Right form of verbs",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "He insisted on ___ there alone.",
+      "options": [
+        "to go",
+        "went",
+        "go",
+        "going"
+      ],
+      "answer": 3,
+      "explanation": "A preposition such as 'on' is always followed by a gerund, not an infinitive."
+    },
+    {
+      "id": "en-prep-032",
+      "topic": "Prepositions",
+      "difficulty": "easy",
+      "grade_bands": [
+        "11-12",
+        "13-16",
+        "17-20"
+      ],
+      "stem": "He has been absent ___ Monday last.",
+      "options": [
+        "for",
+        "since",
+        "at",
+        "from"
+      ],
+      "answer": 1,
+      "explanation": "'Since' is used with a point of time in a perfect tense; 'for' is used with a period of time."
+    },
+    {
+      "id": "en-prep-033",
+      "topic": "Prepositions",
+      "difficulty": "easy",
+      "grade_bands": [
+        "11-12",
+        "13-16",
+        "17-20"
+      ],
+      "stem": "She is very good ___ mathematics.",
+      "options": [
+        "at",
+        "with",
+        "in",
+        "on"
+      ],
+      "answer": 0,
+      "explanation": "The standard collocation is 'good at' a subject or skill."
+    },
+    {
+      "id": "en-prep-034",
+      "topic": "Prepositions",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "The book is divided ___ five chapters.",
+      "options": [
+        "among",
+        "into",
+        "to",
+        "in"
+      ],
+      "answer": 1,
+      "explanation": "'Divide into' is used when something is separated into parts; 'divide among' is used for distribution to people."
+    },
+    {
+      "id": "en-tense-035",
+      "topic": "Tense",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "I ___ here for five years.",
+      "options": [
+        "lived",
+        "am living",
+        "live",
+        "have been living"
+      ],
+      "answer": 3,
+      "explanation": "A situation that began in the past and still continues takes the present perfect continuous."
+    },
+    {
+      "id": "en-tense-036",
+      "topic": "Tense",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "By next year he ___ his graduation.",
+      "options": [
+        "will have completed",
+        "completes",
+        "has completed",
+        "will complete"
+      ],
+      "answer": 0,
+      "explanation": "An action expected to finish before a future point takes the future perfect tense."
+    },
+    {
+      "id": "en-voice-037",
+      "topic": "Voice",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "Change the voice: “Who did this?”",
+      "options": [
+        "Who was this done by?",
+        "By whom was this done?",
+        "Whom did this done?",
+        "By whom this was done?"
+      ],
+      "answer": 1,
+      "explanation": "In passive interrogatives with 'who', the subject becomes 'by whom' and the sentence keeps interrogative word order."
+    },
+    {
+      "id": "en-voice-038",
+      "topic": "Voice",
+      "difficulty": "easy",
+      "grade_bands": [
+        "11-12",
+        "13-16",
+        "17-20"
+      ],
+      "stem": "“Let the door be opened.” is the passive form of —",
+      "options": [
+        "Someone opened the door.",
+        "The door opens.",
+        "Open the door.",
+        "The door is open."
+      ],
+      "answer": 2,
+      "explanation": "Imperative sentences take the passive form 'Let + object + be + past participle'."
+    },
+    {
+      "id": "en-narr-039",
+      "topic": "Narration",
+      "difficulty": "easy",
+      "grade_bands": [
+        "11-12",
+        "13-16",
+        "17-20"
+      ],
+      "stem": "He said, “I am ill.” — Indirect speech:",
+      "options": [
+        "He said that I was ill.",
+        "He told that he is ill.",
+        "He says that he is ill.",
+        "He said that he was ill."
+      ],
+      "answer": 3,
+      "explanation": "The reporting verb is in the past, so the present tense in the direct speech shifts to the past."
+    },
+    {
+      "id": "en-narr-040",
+      "topic": "Narration",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "He said to me, “Do it now.” — Indirect speech:",
+      "options": [
+        "He said me to do it now.",
+        "He requested me doing it now.",
+        "He told me do it then.",
+        "He ordered me to do it then."
+      ],
+      "answer": 3,
+      "explanation": "An imperative becomes an infinitive after a verb such as ordered/told, and 'now' changes to 'then'."
+    },
+    {
+      "id": "en-spell-041",
+      "topic": "Sentence correction & spelling",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "Which one is the correct spelling?",
+      "options": [
+        "Acommodation",
+        "Accommodation",
+        "Accomodation",
+        "Acomodation"
+      ],
+      "answer": 1,
+      "explanation": "'Accommodation' has a double c and a double m."
+    },
+    {
+      "id": "en-spell-042",
+      "topic": "Sentence correction & spelling",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "Which one is the correct spelling?",
+      "options": [
+        "Questionnaire",
+        "Questionnair",
+        "Questionaire",
+        "Questionnaire's"
+      ],
+      "answer": 0,
+      "explanation": "'Questionnaire' is spelt with a double n before -aire."
+    },
+    {
+      "id": "en-corr-043",
+      "topic": "Sentence correction & spelling",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "Which sentence is correct?",
+      "options": [
+        "One of my friends are a doctor.",
+        "One of my friend is a doctor.",
+        "One of my friend are a doctor.",
+        "One of my friends is a doctor."
+      ],
+      "answer": 3,
+      "explanation": "'One of' takes a plural noun but a singular verb, because the real subject is 'one'."
+    },
+    {
+      "id": "en-syn-044",
+      "topic": "Synonyms & antonyms",
+      "difficulty": "easy",
+      "grade_bands": [
+        "11-12",
+        "13-16",
+        "17-20"
+      ],
+      "stem": "The synonym of 'Benevolent' is —",
+      "options": [
+        "Wealthy",
+        "Kind",
+        "Cruel",
+        "Careless"
+      ],
+      "answer": 1,
+      "explanation": "'Benevolent' means well-meaning and kindly."
+    },
+    {
+      "id": "en-ant-045",
+      "topic": "Synonyms & antonyms",
+      "difficulty": "easy",
+      "grade_bands": [
+        "11-12",
+        "13-16",
+        "17-20"
+      ],
+      "stem": "The antonym of 'Abundant' is —",
+      "options": [
+        "Scarce",
+        "Sufficient",
+        "Ample",
+        "Plentiful"
+      ],
+      "answer": 0,
+      "explanation": "'Abundant' means existing in large quantity; its opposite is 'scarce'."
+    },
+    {
+      "id": "en-syn-046",
+      "topic": "Synonyms & antonyms",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "The synonym of 'Candid' is —",
+      "options": [
+        "Doubtful",
+        "Secretive",
+        "Hostile",
+        "Frank"
+      ],
+      "answer": 3,
+      "explanation": "'Candid' means open and truthful in speech, i.e. frank."
+    },
+    {
+      "id": "en-idiom-047",
+      "topic": "Idioms & phrases",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "“To keep one's head” means —",
+      "options": [
+        "to memorise well",
+        "to be arrogant",
+        "to remain calm",
+        "to lead a group"
+      ],
+      "answer": 2,
+      "explanation": "The idiom means staying calm and sensible in a difficult situation. Its opposite is 'to lose one's head'."
+    },
+    {
+      "id": "en-idiom-048",
+      "topic": "Idioms & phrases",
+      "difficulty": "easy",
+      "grade_bands": [
+        "11-12",
+        "13-16",
+        "17-20"
+      ],
+      "stem": "“A bolt from the blue” means —",
+      "options": [
+        "a clever plan",
+        "a sudden and unexpected shock",
+        "a long-awaited result",
+        "a heavy thunderstorm"
+      ],
+      "answer": 1,
+      "explanation": "The phrase refers to something shocking that happens without any warning."
+    },
+    {
+      "id": "en-trans-049",
+      "topic": "Translation",
+      "difficulty": "easy",
+      "grade_bands": [
+        "11-12",
+        "13-16",
+        "17-20"
+      ],
+      "stem": "‘সে সাঁতার কাটতে জানে না।’ — Correct translation:",
+      "options": [
+        "He does not know to swim.",
+        "He does not know how to swim.",
+        "He is not knowing swimming.",
+        "He cannot knows swimming."
+      ],
+      "answer": 1,
+      "explanation": "'Know' is followed by 'how to + verb' when it expresses an acquired skill."
+    },
+    {
+      "id": "en-trans-050",
+      "topic": "Translation",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "‘আমার ঘুম পাচ্ছে।’ — Correct translation:",
+      "options": [
+        "My sleep is coming.",
+        "I am sleeping.",
+        "I feel sleepy.",
+        "I have sleep."
+      ],
+      "answer": 2,
+      "explanation": "Bengali impersonal expressions of feeling are rendered in English with 'feel + adjective'."
+    }
+  ]
+}

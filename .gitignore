@@ -1,0 +1,8 @@
+node_modules
+dist
+.env
+.DS_Store
+*.local
+
+# Scanned source papers: large, and often not ours to redistribute.
+scans

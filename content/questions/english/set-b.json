@@ -1,0 +1,464 @@
+{
+  "source": "Set B (original, past-paper pattern)",
+  "defaults": {
+    "subject": "english",
+    "status": "reviewed",
+    "expires_at": null
+  },
+  "questions": [
+    {
+      "id": "en-idiom-101",
+      "topic": "Idioms & phrases",
+      "difficulty": "hard",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "What does the idiom 'to smell a rat' mean?",
+      "options": [
+        "To search in vain",
+        "To fall seriously ill",
+        "To find a bad odour",
+        "To suspect something wrong"
+      ],
+      "answer": 3,
+      "explanation": "'To smell a rat' means to suspect that something is wrong or that one is being deceived."
+    },
+    {
+      "id": "en-idiom-102",
+      "topic": "Idioms & phrases",
+      "difficulty": "hard",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "'A bolt from the blue' means —",
+      "options": [
+        "A sudden unexpected shock",
+        "A flash of lightning",
+        "A clever remark",
+        "A long awaited event"
+      ],
+      "answer": 0,
+      "explanation": "The phrase refers to something that happens suddenly and without warning, like lightning from a clear sky."
+    },
+    {
+      "id": "en-idiom-103",
+      "topic": "Idioms & phrases",
+      "difficulty": "hard",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "Two people who are 'at daggers drawn' are —",
+      "options": [
+        "Close allies",
+        "Deep in discussion",
+        "Engaged in trade",
+        "Bitterly hostile"
+      ],
+      "answer": 3,
+      "explanation": "'At daggers drawn' describes people in bitter enmity, ready to fight."
+    },
+    {
+      "id": "en-corr-104",
+      "topic": "Sentence correction & spelling",
+      "difficulty": "hard",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "Which sentence is correct?",
+      "options": [
+        "Neither of the boys has done the work.",
+        "Neither of the boy has done the work.",
+        "Neither of the boys have done the work.",
+        "Neither of the boy have done the work."
+      ],
+      "answer": 0,
+      "explanation": "'Neither of' takes a plural noun but a singular verb: neither of the boys HAS."
+    },
+    {
+      "id": "en-corr-105",
+      "topic": "Sentence correction & spelling",
+      "difficulty": "hard",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "Which sentence is correct?",
+      "options": [
+        "The news is very encouraging.",
+        "The newses are very encouraging.",
+        "The news are very encouraging.",
+        "A news is very encouraging."
+      ],
+      "answer": 0,
+      "explanation": "'News' is an uncountable noun and always takes a singular verb, despite the final -s."
+    },
+    {
+      "id": "en-prep-106",
+      "topic": "Prepositions",
+      "difficulty": "hard",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "He is devoid ___ common sense.",
+      "options": [
+        "with",
+        "in",
+        "from",
+        "of"
+      ],
+      "answer": 3,
+      "explanation": "'Devoid' is always followed by 'of' — devoid of sense, devoid of feeling."
+    },
+    {
+      "id": "en-prep-107",
+      "topic": "Prepositions",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16",
+        "17-20"
+      ],
+      "stem": "We must abide ___ the rules.",
+      "options": [
+        "by",
+        "on",
+        "to",
+        "with"
+      ],
+      "answer": 0,
+      "explanation": "'Abide by' means to obey or comply with a rule or decision."
+    },
+    {
+      "id": "en-cond-108",
+      "topic": "Tense",
+      "difficulty": "hard",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "Had I known his address, I ___ him.",
+      "options": [
+        "would write to",
+        "wrote to",
+        "would have written to",
+        "will write to"
+      ],
+      "answer": 2,
+      "explanation": "'Had + past participle' signals the third conditional, which is completed by 'would have + past participle'."
+    },
+    {
+      "id": "en-voice-109",
+      "topic": "Voice",
+      "difficulty": "hard",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "Change into passive voice: 'Who wrote this letter?'",
+      "options": [
+        "Who was written this letter?",
+        "Whom was this letter written by?",
+        "By whom this letter was written?",
+        "By whom was this letter written?"
+      ],
+      "answer": 3,
+      "explanation": "In a passive question the auxiliary comes before the subject: By whom WAS this letter written?"
+    },
+    {
+      "id": "en-syn-110",
+      "topic": "Synonyms & antonyms",
+      "difficulty": "hard",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "Choose the word closest in meaning to 'abate'.",
+      "options": [
+        "Postpone",
+        "Diminish",
+        "Confuse",
+        "Increase"
+      ],
+      "answer": 1,
+      "explanation": "'Abate' means to lessen or subside — the storm abated. So 'diminish' is closest."
+    },
+    {
+      "id": "en-syn-111",
+      "topic": "Synonyms & antonyms",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16",
+        "17-20"
+      ],
+      "stem": "Choose the word closest in meaning to 'obstinate'.",
+      "options": [
+        "Anxious",
+        "Stubborn",
+        "Obedient",
+        "Generous"
+      ],
+      "answer": 1,
+      "explanation": "'Obstinate' means refusing to change one's mind, i.e. stubborn."
+    },
+    {
+      "id": "en-ant-112",
+      "topic": "Synonyms & antonyms",
+      "difficulty": "hard",
+      "grade_bands": [
+        "11-12",
+        "13-16"
+      ],
+      "stem": "Choose the opposite of 'candid'.",
+      "options": [
+        "Frank",
+        "Bright",
+        "Honest",
+        "Evasive"
+      ],
+      "answer": 3,
+      "explanation": "'Candid' means open and frank, so its opposite is 'evasive'. Honest and frank are synonyms of it."
+    },
+    {
+      "id": "en-ant-113",
+      "topic": "Synonyms & antonyms",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16",
+        "17-20"
+      ],
+      "stem": "Choose the opposite of 'scarcity'.",
+      "options": [
+        "Poverty",
+        "Demand",
+        "Shortage",
+        "Abundance"
+      ],
+      "answer": 3,
+      "explanation": "'Scarcity' means a shortage; its opposite is 'abundance'."
+    },
+    {
+      "id": "en-tense-114",
+      "topic": "Tense",
+      "difficulty": "medium",
+      "grade_bands": [
+        "11-12",
+        "13-16",
+        "17-20"
+      ],
+      "stem": "He ___ here since 2015.",
+      "options": [
+        "has been living",
+        "lives",
+        "is living",
+        "lived"
+      ],
+      "answer": 0,
+      "explanation": "'Since' with an action continuing to the present calls for the present perfect continuous."
+    },
+    {
+      "id": "en-tense-115",
+      "topic": "Tense",
+      "difficulty": "medium",
+      "grade_bands": [
+        "13-16",
+        "17-20"
+      ],
+      "stem": "The train ___ before we reached the station.",
+      "options": [
+        "has left",
+        "had left",
+        "was leaving",
+        "left"
+      ],
+      "answer": 1,
+      "explanation": "Of two past actions, the earlier one takes the past perfect: the train HAD LEFT before we reached."
+    },
+    {
+      "id": "en-art-116",
+      "topic": "Parts of speech",
+      "difficulty": "medium",
+      "grade_bands": [
+        "13-16",
+        "17-20"
+      ],
+      "stem": "She waited for ___ hour at the gate.",
+      "options": [
+        "a",
+        "an",
+        "the",
+        "no article"
+      ],
+      "answer": 1,
+      "explanation": "The 'h' in 'hour' is silent, so the word begins with a vowel sound and takes 'an'."
+    },
+    {
+      "id": "en-art-117",
+      "topic": "Parts of speech",
+      "difficulty": "easy",
+      "grade_bands": [
+        "13-16",
+        "17-20"
+      ],
+      "stem": "He is ___ university student.",
+      "options": [
+        "a",
+        "no article",
+        "the",
+        "an"
+      ],
+      "answer": 0,
+      "explanation": "'University' begins with the consonant sound /ju:/, so it takes 'a', not 'an'."
+    },
+    {
+      "id": "en-plural-118",
+      "topic": "Parts of speech",
+      "difficulty": "easy",
+      "grade_bands": [
+        "13-16",
+        "17-20"
+      ],
+      "stem": "What is the plural of 'crisis'?",
+      "options": [
+        "Crises",
+        "Crisen",
+        "Crisises",
+        "Crisis"
+      ],
+      "answer": 0,
+      "explanation": "Nouns of Greek origin ending in -is form the plural in -es: crisis becomes crises."
+    },
+    {
+      "id": "en-plural-119",
+      "topic": "Parts of speech",
+      "difficulty": "easy",
+      "grade_bands": [
+        "13-16",
+        "17-20"
+      ],
+      "stem": "What is the plural of 'child'?",
+      "options": [
+        "Children",
+        "Childes",
+        "Childrens",
+        "Childs"
+      ],
+      "answer": 0,
+      "explanation": "'Child' has the irregular plural 'children'."
+    },
+    {
+      "id": "en-spell-120",
+      "topic": "Sentence correction & spelling",
+      "difficulty": "easy",
+      "grade_bands": [
+        "13-16",
+        "17-20"
+      ],
+      "stem": "Which spelling is correct?",
+      "options": [
+        "Necessary",
+        "Necessery",
+        "Neccessary",
+        "Necesary"
+      ],
+      "answer": 0,
+      "explanation": "'Necessary' has one c and two s's."
+    },
+    {
+      "id": "en-spell-121",
+      "topic": "Sentence correction & spelling",
+      "difficulty": "medium",
+      "grade_bands": [
+        "13-16",
+        "17-20"
+      ],
+      "stem": "Which spelling is correct?",
+      "options": [
+        "Occassion",
+        "Ocassion",
+        "Occasion",
+        "Ocasion"
+      ],
+      "answer": 2,
+      "explanation": "'Occasion' has two c's and one s."
+    },
+    {
+      "id": "en-vocab-122",
+      "topic": "Synonyms & antonyms",
+      "difficulty": "easy",
+      "grade_bands": [
+        "13-16",
+        "17-20"
+      ],
+      "stem": "A person who writes dictionaries is called a —",
+      "options": [
+        "Bibliographer",
+        "Cartographer",
+        "Calligrapher",
+        "Lexicographer"
+      ],
+      "answer": 3,
+      "explanation": "A lexicographer compiles dictionaries. A cartographer makes maps; a calligrapher does ornamental writing."
+    },
+    {
+      "id": "en-subverb-123",
+      "topic": "Right form of verbs",
+      "difficulty": "medium",
+      "grade_bands": [
+        "13-16",
+        "17-20"
+      ],
+      "stem": "Each of the students ___ a book.",
+      "options": [
+        "have",
+        "were having",
+        "has",
+        "are having"
+      ],
+      "answer": 2,
+      "explanation": "'Each' is singular, so it takes a singular verb regardless of the plural noun that follows."
+    },
+    {
+      "id": "en-basic-124",
+      "topic": "Right form of verbs",
+      "difficulty": "easy",
+      "grade_bands": [
+        "13-16",
+        "17-20"
+      ],
+      "stem": "He ___ to school every morning.",
+      "options": [
+        "goes",
+        "gone",
+        "going",
+        "go"
+      ],
+      "answer": 0,
+      "explanation": "A third-person singular subject in the simple present takes the -s form: he goes."
+    },
+    {
+      "id": "en-basic-125",
+      "topic": "Right form of verbs",
+      "difficulty": "easy",
+      "grade_bands": [
+        "13-16",
+        "17-20"
+      ],
+      "stem": "What is the past participle of 'write'?",
+      "options": [
+        "Writing",
+        "Written",
+        "Writed",
+        "Wrote"
+      ],
+      "answer": 1,
+      "explanation": "The forms are write – wrote – written."
+    }
+  ]
+}

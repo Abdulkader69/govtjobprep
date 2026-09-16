@@ -1,0 +1,80 @@
+now move on to home page design,
+once user visit our app, in header left side logo, right side login option and demo exam option.
+
+in the hero section, we can show headline and how hour app working. I will add video later for how it work.
+
+Maybe we can add another section for Pros and Cons.? and why we are best.
+
+then footer with basic info.
+
+in demo exam there will be 40 mcq question, individual user can only take demo exam. 
+
+main exam option, 
+we need to give option to choose grade, then how many question they want maybe we can add dropdown with predefined value. there will question come from all json file. everytime question will be mixed up. everytime visitor see new question from our contents.
+
+main exam option 2,
+there user can choose topics based exam, like: there will be options to choose: bangla, english, math or GK. Then user can see topics dropdown for each main category.
+
+please rearrange json as per topics.
+
+
+
+বাংলা:
+
+সন্ধি
+সমাস
+কারক ও বিভক্তি
+প্রকৃতি-প্রত্যয়
+বাগধারা
+এক কথায় প্রকাশ
+সমার্থক ও বিপরীত শব্দ
+শুদ্ধ বানান / বাক্য শুদ্ধিকরণ
+পদ প্রকরণ ও বাক্য প্রকরণ
+সাহিত্য (লেখক, রচনা, যুগ)
+
+English:
+
+Parts of speech
+Right form of verbs
+Prepositions
+Tense
+Voice
+Narration
+Sentence correction & spelling
+Synonyms & antonyms
+Idioms & phrases
+Translation
+
+গণিত:
+
+পাটিগণিত	ল.সা.গু/গ.সা.গু, শতকরা, লাভ-ক্ষতি, সুদকষা, অনুপাত, গড়, ঐকিক নিয়ম, নৌকা-স্রোত
+বীজগণিত	মান নির্ণয়, সূত্র, সরল সমীকরণ, উৎপাদক
+জ্যামিতি	কোণ, ত্রিভুজ, চতুর্ভুজ, বৃত্ত, ক্ষেত্রফল
+
+
+সাধারণ জ্ঞান:
+
+মুক্তিযুদ্ধ ও ভাষা আন্দোলন
+সংবিধান
+বাংলাদেশের ভূগোল ও নদী
+অর্থনীতি ও কৃষি
+ইতিহাস ও প্রত্নতত্ত্ব
+সাম্প্রতিক বাংলাদেশ
+আন্তর্জাতিক সংস্থা, ভূগোল, সাম্প্রতিক বিশ্ব, খেলা
+দৈনন্দিন বিজ্ঞান ও ICT
+
+
+
+
+Preparation Room: 
+
+in this page, can we show question with answers explain. so before taking exam i can do revision. 
+
+Give option to select main category and sub-category to choose topics to read. then show question based on this topics..
+
+
+I want to add limitation here:
+when i login with my phone number (01748114144,0173334538) i can access all questions. but when i'm not logged i can access only 500 question. 
+
+
+can we store all exam data in profile page? I mean i want to add profile page with all neceesery functionality.

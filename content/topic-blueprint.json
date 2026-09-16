@@ -1,0 +1,43 @@
+{
+  "_comment": "Topic weights within each subject. Relative, not absolute: they are scaled to whatever that band allocates to the subject, so one blueprint serves every band. A subject with no entry here is drawn by difficulty only. A question whose topic is not listed is still eligible as backfill, so nothing gets stranded.",
+  "_target_per_topic": 50,
+  "bangla": {
+    "সন্ধি": 2,
+    "সমাস": 2,
+    "কারক ও বিভক্তি": 2,
+    "প্রকৃতি-প্রত্যয়": 1,
+    "বাগধারা": 3,
+    "এক কথায় প্রকাশ": 2,
+    "সমার্থক ও বিপরীত শব্দ": 3,
+    "শুদ্ধ বানান / বাক্য শুদ্ধিকরণ": 3,
+    "পদ প্রকরণ ও বাক্য প্রকরণ": 2,
+    "সাহিত্য (লেখক, রচনা, যুগ)": 5
+  },
+  "english": {
+    "Parts of speech": 3,
+    "Right form of verbs": 3,
+    "Prepositions": 3,
+    "Tense": 3,
+    "Voice": 2,
+    "Narration": 2,
+    "Sentence correction & spelling": 3,
+    "Synonyms & antonyms": 3,
+    "Idioms & phrases": 2,
+    "Translation": 1
+  },
+  "math": {
+    "পাটিগণিত": 15,
+    "বীজগণিত": 5,
+    "জ্যামিতি": 5
+  },
+  "gk": {
+    "মুক্তিযুদ্ধ ও ভাষা আন্দোলন": 4,
+    "সংবিধান": 3,
+    "বাংলাদেশের ভূগোল ও নদী": 3,
+    "অর্থনীতি ও কৃষি": 2,
+    "ইতিহাস ও প্রত্নতত্ত্ব": 3,
+    "সাম্প্রতিক বাংলাদেশ": 3,
+    "আন্তর্জাতিক ও বিশ্ব": 4,
+    "দৈনন্দিন বিজ্ঞান ও ICT": 3
+  }
+}

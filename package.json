@@ -1,0 +1,29 @@
+{
+  "name": "bd-job-exam",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "MCQ practice app for Bangladesh government job exams (grade 11-20)",
+  "scripts": {
+    "bank": "node scripts/build-bank.mjs",
+    "pages": "node scripts/pdf-to-pages.mjs",
+    "import": "node scripts/import-draft.mjs",
+    "dev": "npm run bank && vite",
+    "prebuild": "npm run validate && npm run bank",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "validate": "node scripts/validate-bank.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.8",
+    "vitest": "^2.1.1"
+  }
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "grade_band": "11-12",
+    "questions": 100,
+    "minutes": 60,
+    "negative_mark": 0.25,
+    "pass_percent": 50,
+    "difficulty_mix": {
+      "easy": 25,
+      "medium": 50,
+      "hard": 25
+    },
+    "subject_weights": {
+      "bangla": 25,
+      "english": 25,
+      "math": 25,
+      "gk": 25
+    }
+  },
+  {
+    "grade_band": "13-16",
+    "questions": 80,
+    "minutes": 60,
+    "negative_mark": 0.25,
+    "pass_percent": 50,
+    "difficulty_mix": {
+      "easy": 40,
+      "medium": 45,
+      "hard": 15
+    },
+    "subject_weights": {
+      "bangla": 20,
+      "english": 20,
+      "math": 20,
+      "gk": 20
+    }
+  },
+  {
+    "grade_band": "17-20",
+    "questions": 70,
+    "minutes": 60,
+    "negative_mark": 0,
+    "pass_percent": 40,
+    "difficulty_mix": {
+      "easy": 60,
+      "medium": 35,
+      "hard": 5
+    },
+    "subject_weights": {
+      "bangla": 20,
+      "english": 15,
+      "math": 15,
+      "gk": 20
+    }
+  }
+]
