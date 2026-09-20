@@ -4,12 +4,16 @@ import SiteFooter from "@/components/SiteFooter.jsx";
 import OptionList from "@/components/OptionList.jsx";
 import ExamTag from "@/components/ExamTag.jsx";
 import BookmarkButton from "@/components/BookmarkButton.jsx";
+import Explanation from "@/components/Explanation.jsx";
 import { DIFFICULTY_LABEL } from "@/lib/constants.js";
 import { bn } from "@/lib/bn.js";
 
 export default function Review({ attempt, auth }) {
   const { result } = attempt;
+  if ((!result && attempt.restoring) || !auth?.ready) return <div className="state">লোড হচ্ছে…</div>;
   if (!result) return <Navigate to="/" replace />;
+  // Answers and explanations are a premium feature; the result page says so.
+  if (!auth.unlocked) return <Navigate to="/result" replace />;
 
   const { answers, questions } = result;
 
@@ -28,13 +32,13 @@ export default function Review({ attempt, auth }) {
               {q.topic} · {DIFFICULTY_LABEL[q.difficulty]}
               <ExamTag exam={q.exam} />
             </span>
-            <BookmarkButton id={q.id} />
+            {auth?.user && <BookmarkButton id={q.id} />}
           </div>
           <h2 className="stem" style={{ fontSize: "16px", marginBottom: "12px" }}>
             {bn(i + 1)}. {q.stem}
           </h2>
           <OptionList question={q} picked={answers[q.id]} review />
-          <div className="expl"><b>ব্যাখ্যা:</b> {q.explanation}</div>
+          <Explanation text={q.explanation} subject={q.subject} />
         </div>
       ))}
 
@@ -44,7 +48,7 @@ export default function Review({ attempt, auth }) {
         </Link>
       </div>
       </div>
-      <SiteFooter />
+      <SiteFooter auth={auth} />
     </>
   );
 }

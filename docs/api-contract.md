@@ -74,6 +74,18 @@ read questions the study endpoint withheld.
 Keep the guest subset **stable per user**. If it is re-rolled each request, a
 visitor who reloads enough times sees the whole bank and the cap means nothing.
 
+## Accounts
+
+Accounts are **not** part of this contract: they live in Firebase Auth, and
+the one-device-per-account rule lives in a Firestore document (see the
+README, "Accounts"). A Laravel backend that implements the endpoints below
+should verify the Firebase ID token the client sends (`Authorization: Bearer
+<idToken>`, via the Firebase Admin SDK or Google's public JWKS) and read
+`users/{uid}.plan` to decide the access tier — never a flag from the client.
+If it also reads `sessions/{uid}.deviceId` and compares it to an
+`X-Device-Id` header, the device rule becomes tamper-proof, because the bank
+is then only served to the device that holds the session.
+
 ## `GET /api/study`
 
 Revision content for the preparation room. Query: `subject`, `topic`,

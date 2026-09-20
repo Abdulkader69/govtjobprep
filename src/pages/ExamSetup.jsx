@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import SiteHeader from "@/components/SiteHeader.jsx";
 import SiteFooter from "@/components/SiteFooter.jsx";
 import ResumeBanner from "@/components/ResumeBanner.jsx";
 import { api } from "@/api";
 import { BANDS, SUBJECTS, COUNT_OPTIONS, DEFAULT_COUNT } from "@/lib/constants.js";
 import { bn } from "@/lib/bn.js";
+import { GUEST_QUESTION_LIMIT } from "@/lib/access.js";
 
 /**
  * Exam setup for both modes.
@@ -63,10 +64,6 @@ export default function ExamSetup({ attempt, auth }) {
   const topics = (taxonomy?.[subject] ?? []).map((t) => t.topic);
   useEffect(() => setPicked([]), [subject]);
 
-  if (!auth.user && auth.ready) {
-    return <Navigate to={`/login?next=${encodeURIComponent(`/start?mode=${mode}`)}`} replace />;
-  }
-
   async function begin() {
     try {
       await attempt.start({
@@ -96,7 +93,7 @@ export default function ExamSetup({ attempt, auth }) {
             </button>
           </div>
         </div>
-        <SiteFooter />
+        <SiteFooter auth={auth} />
       </>
     );
   }
@@ -119,6 +116,19 @@ export default function ExamSetup({ attempt, auth }) {
         </div>
 
         <ResumeBanner attempt={attempt} />
+
+        {auth.ready && !auth.unlocked && (
+          <p className="locked-note">
+            {auth.user ? "আপনার অ্যাকাউন্টে" : "লগইন ছাড়া"} {bn(GUEST_QUESTION_LIMIT)}টি প্রশ্ন থেকে পরীক্ষা হবে।{" "}
+            {auth.user ? (
+              "পুরো ব্যাংক পেতে অ্যাডমিনের কাছ থেকে অ্যাক্সেস নিন।"
+            ) : (
+              <>
+                <Link to={`/login?next=${encodeURIComponent(`/start?mode=${mode}`)}`}>লগইন করলে</Link> ফলাফল প্রোফাইলে জমা থাকবে।
+              </>
+            )}
+          </p>
+        )}
 
         <div className="tabs" role="tablist">
           {[
@@ -230,7 +240,7 @@ export default function ExamSetup({ attempt, auth }) {
           )}
         </div>
       </div>
-      <SiteFooter />
+      <SiteFooter auth={auth} />
     </>
   );
 }

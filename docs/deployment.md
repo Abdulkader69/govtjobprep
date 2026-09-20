@@ -7,6 +7,32 @@ harder than it is:
    Short version: git is the source of truth, the database is a derived copy.
 2. **Where does the API run?** — this document.
 
+## What runs today
+
+The app as shipped needs no Laravel: grading is in the browser
+(`VITE_API_MODE=local`) and accounts are Firebase. Both fit free plans.
+
+```
+Vercel Hobby (free)            Firebase Spark (free)
+└── dist/  static SPA  ──────► Auth       email/password (phone OTP on Blaze)
+                               Firestore  users/{uid}     profile + plan
+                                          sessions/{uid}  which device is signed in
+                                          bank/*          the private questions (plan: full only)
+```
+
+Setup is in the README under "Deployment". The two things people forget:
+publish `firestore.rules` (a Firestore in test mode is world-writable), and
+add the Vercel hostname to Firebase → Authentication → Authorized domains, or
+every login fails with `auth/unauthorized-domain`.
+
+Free-tier limits that matter here: Firestore gives 50K reads and 20K writes
+a day. A login is one write and two reads; a signed-in tab holds three
+listeners that cost nothing while idle; an unlocked account fetching the
+full bank is ~8 reads, once per bank version thanks to the local cache. Phone OTP is not on Spark at all.
+
+The rest of this document is about the part that does *not* fit: moving
+grading to a Laravel server.
+
 ## Can you deploy Laravel on Vercel?
 
 Technically yes, practically no — not for this.

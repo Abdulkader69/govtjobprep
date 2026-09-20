@@ -1,6 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "@/pages/Home.jsx";
 import Login from "@/pages/Login.jsx";
+import Register from "@/pages/Register.jsx";
+import Admin from "@/pages/Admin.jsx";
 import ExamSetup from "@/pages/ExamSetup.jsx";
 import Demo from "@/pages/Demo.jsx";
 import PrepRoom from "@/pages/PrepRoom.jsx";
@@ -10,6 +12,7 @@ import Result from "@/pages/Result.jsx";
 import Review from "@/pages/Review.jsx";
 import { useAttempt } from "@/lib/useAttempt.js";
 import { useAuth } from "@/lib/useAuth.js";
+import AskAdmin from "@/components/AskAdmin.jsx";
 
 export default function App() {
   // One attempt lives above the router so navigating between result and review
@@ -18,9 +21,12 @@ export default function App() {
   const auth = useAuth();
 
   return (
+    <>
     <Routes>
       <Route path="/" element={<Home auth={auth} attempt={attempt} />} />
       <Route path="/login" element={<Login auth={auth} />} />
+      <Route path="/register" element={<Register auth={auth} />} />
+      <Route path="/admin" element={<Admin auth={auth} />} />
       <Route path="/start" element={<ExamSetup attempt={attempt} auth={auth} />} />
       <Route path="/demo" element={<Demo attempt={attempt} auth={auth} />} />
       <Route path="/prepare" element={<PrepRoom auth={auth} />} />
@@ -30,5 +36,7 @@ export default function App() {
       <Route path="/review" element={<Review attempt={attempt} auth={auth} />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
+    <AskAdmin auth={auth} />
+    </>
   );
 }

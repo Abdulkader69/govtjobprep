@@ -6,6 +6,15 @@ import { bySubject, weakTopics } from "@/lib/scoring.js";
 import { saveAttempt } from "@/lib/history.js";
 import { bn, mark } from "@/lib/bn.js";
 
+function LockIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ verticalAlign: "-2px", marginRight: 6 }}>
+      <rect x="4" y="11" width="16" height="10" rx="2" />
+      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+    </svg>
+  );
+}
+
 export default function Result({ attempt, auth }) {
   const { result, attempt: data } = attempt;
   // Ref, not state: Result re-renders on navigation back from Review, and a
@@ -30,6 +39,9 @@ export default function Result({ attempt, auth }) {
     });
   }, [result, data]);
 
+  // On a reload the last result is read back from storage a moment after
+  // mount; bouncing home before that would lose the page.
+  if (!result && attempt.restoring) return <div className="state">লোড হচ্ছে…</div>;
   if (!result) return <Navigate to="/" replace />;
 
   const { auto, result: score, answers, questions } = result;
@@ -87,22 +99,47 @@ export default function Result({ attempt, auth }) {
         </div>
       )}
 
-      <div className="nav">
+      <div className="nav" style={{ paddingBottom: auth?.unlocked ? undefined : 8 }}>
         <Link to="/" className="nav-link" style={{ flex: 1 }}>
           <button type="button" style={{ width: "100%" }}>নতুন পরীক্ষা</button>
         </Link>
-        <Link to="/review" style={{ flex: 1 }}>
-          <button type="button" className="primary" style={{ width: "100%" }}>
-            উত্তর ও ব্যাখ্যা
+        {auth?.unlocked ? (
+          <Link to="/review" style={{ flex: 1 }}>
+            <button type="button" className="primary" style={{ width: "100%" }}>
+              উত্তর ও ব্যাখ্যা
+            </button>
+          </Link>
+        ) : (
+          <button type="button" className="primary locked" style={{ flex: 1 }} aria-disabled="true" disabled>
+            <LockIcon /> উত্তর ও ব্যাখ্যা
           </button>
-        </Link>
+        )}
       </div>
+      {!auth?.unlocked && (
+        <p className="fineprint locked-desc">
+          উত্তর ও ব্যাখ্যা দেখতে প্রিমিয়াম প্ল্যান লাগবে।{" "}
+          {auth?.user ? (
+            "অ্যাডমিনের সাথে যোগাযোগ করে প্রিমিয়াম অ্যাক্সেস নিন।"
+          ) : (
+            <>
+              <Link to="/register?next=/profile">রেজিস্টার করে</Link> প্রিমিয়াম অ্যাক্সেস নিন।
+            </>
+          )}
+        </p>
+      )}
 
       <p className="fineprint" style={{ textAlign: "center" }}>
-        এই ফলাফল আপনার <Link to="/profile">প্রোফাইলে</Link> সংরক্ষিত হয়েছে।
+        {auth?.user ? (
+          <>এই ফলাফল আপনার <Link to="/profile">প্রোফাইলে</Link> সংরক্ষিত হয়েছে।</>
+        ) : (
+          <>
+            ফলাফলটি এই ব্রাউজারে সংরক্ষিত হয়েছে। সব ফলাফল ও পুরো প্রোফাইল দেখতে{" "}
+            <Link to="/register?next=/profile">রেজিস্টার করুন</Link>।
+          </>
+        )}
       </p>
       </div>
-      <SiteFooter />
+      <SiteFooter auth={auth} />
     </>
   );
 }

@@ -1,15 +1,22 @@
-import { useEffect, useMemo, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
-import SiteHeader from "@/components/SiteHeader.jsx";
-import SiteFooter from "@/components/SiteFooter.jsx";
-import ExamTag from "@/components/ExamTag.jsx";
-import { api } from "@/api";
-import { SUBJECTS, SUBJECT_LABEL, DIFFICULTY_LABEL, letters, PREP_PER_PAGE } from "@/lib/constants.js";
-import { bn } from "@/lib/bn.js";
-import { GUEST_QUESTION_LIMIT } from "@/lib/access.js";
-import { summarise } from "@/lib/history.js";
-import { bookmarkSet } from "@/lib/bookmarks.js";
-import BookmarkButton from "@/components/BookmarkButton.jsx";
+import { useEffect, useMemo, useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
+import SiteHeader from '@/components/SiteHeader.jsx';
+import SiteFooter from '@/components/SiteFooter.jsx';
+import ExamTag from '@/components/ExamTag.jsx';
+import { api } from '@/api';
+import {
+  SUBJECTS,
+  SUBJECT_LABEL,
+  DIFFICULTY_LABEL,
+  letters,
+  PREP_PER_PAGE,
+} from '@/lib/constants.js';
+import { bn } from '@/lib/bn.js';
+import { GUEST_QUESTION_LIMIT } from '@/lib/access.js';
+import { summarise } from '@/lib/history.js';
+import { bookmarkSet } from '@/lib/bookmarks.js';
+import BookmarkButton from '@/components/BookmarkButton.jsx';
+import Explanation from '@/components/Explanation.jsx';
 
 /**
  * Revision, not examination: every question is shown with its key and
@@ -18,13 +25,13 @@ import BookmarkButton from "@/components/BookmarkButton.jsx";
  */
 export default function PrepRoom({ auth }) {
   const [params, setParams] = useSearchParams();
-  const subject = params.get("subject") || "bangla";
-  const topic = params.get("topic") || "";
-  const subtopic = params.get("subtopic") || "";
-  const page = Math.max(1, Number(params.get("page")) || 1);
+  const subject = params.get('subject') || 'bangla';
+  const topic = params.get('topic') || '';
+  const subtopic = params.get('subtopic') || '';
+  const page = Math.max(1, Number(params.get('page')) || 1);
   // Drill mode: only the questions this browser has got wrong before.
-  const wrongOnly = params.get("wrong") === "1";
-  const savedOnly = params.get("saved") === "1";
+  const wrongOnly = params.get('wrong') === '1';
+  const savedOnly = params.get('saved') === '1';
 
   const [taxonomy, setTaxonomy] = useState(null);
   const [questions, setQuestions] = useState(null);
@@ -63,25 +70,30 @@ export default function PrepRoom({ auth }) {
   const topicRows = taxonomy?.[subject] ?? [];
   const subtopics = useMemo(
     () => topicRows.find((t) => t.topic === topic)?.subtopics ?? [],
-    [topicRows, topic]
+    [topicRows, topic],
   );
 
   // Changing a filter drops the page: page 4 of the old list means nothing in
   // the new one.
   function pick(next) {
     const merged = { subject, topic, subtopic, ...next };
-    const clean = Object.fromEntries(Object.entries(merged).filter(([, v]) => v));
+    const clean = Object.fromEntries(
+      Object.entries(merged).filter(([, v]) => v),
+    );
     setParams(clean, { replace: true });
   }
 
   function goToPage(n) {
     const clean = Object.fromEntries(
-      Object.entries({ subject, topic, subtopic, page: n > 1 ? String(n) : "" }).filter(
-        ([, v]) => v
-      )
+      Object.entries({
+        subject,
+        topic,
+        subtopic,
+        page: n > 1 ? String(n) : '',
+      }).filter(([, v]) => v),
     );
     setParams(clean, { replace: false });
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   const total = questions?.length ?? 0;
@@ -97,8 +109,10 @@ export default function PrepRoom({ auth }) {
     return (
       <>
         <SiteHeader auth={auth} />
-        <div className="wrap"><div className="state">প্রশ্ন আনা যায়নি। আবার চেষ্টা করুন।</div></div>
-        <SiteFooter />
+        <div className="wrap">
+          <div className="state">প্রশ্ন আনা যায়নি। আবার চেষ্টা করুন।</div>
+        </div>
+        <SiteFooter auth={auth} />
       </>
     );
   }
@@ -108,12 +122,19 @@ export default function PrepRoom({ auth }) {
       <SiteHeader auth={auth} />
 
       <div className="wrap prep">
-        <div className="hero" style={{ padding: "34px 0 6px" }}>
-          <h1 style={{ fontSize: 28 }}>প্রস্তুতি কক্ষ</h1>
-          <p>
-            পরীক্ষার আগে পড়ে নিন। প্রতিটি প্রশ্নের সঠিক উত্তর ও ব্যাখ্যা একসঙ্গে
-            দেওয়া আছে — এখানে কোনো সময়সীমা বা নম্বর নেই।
-          </p>
+        <div className="hero hero-row" style={{ padding: '34px 0 6px' }}>
+          <div>
+            <h1 style={{ fontSize: 28 }}>প্রস্তুতি কক্ষ</h1>
+            <p>
+              পরীক্ষার আগে পড়ে নিন। প্রতিটি প্রশ্নের সঠিক উত্তর ও ব্যাখ্যা
+              একসঙ্গে দেওয়া আছে — এখানে কোনো সময়সীমা বা নম্বর নেই।
+            </p>
+          </div>
+          <Link to="/start" className="hero-cta">
+            <button type="button" className="cta">
+              পরীক্ষা শুরু করুন
+            </button>
+          </Link>
         </div>
 
         {savedOnly && (
@@ -157,7 +178,9 @@ export default function PrepRoom({ auth }) {
                   type="button"
                   className="chip"
                   aria-pressed={subject === s.key}
-                  onClick={() => setParams({ subject: s.key }, { replace: true })}
+                  onClick={() =>
+                    setParams({ subject: s.key }, { replace: true })
+                  }
                 >
                   {s.label}
                 </button>
@@ -167,10 +190,15 @@ export default function PrepRoom({ auth }) {
 
           <label className="field">
             <span>টপিক</span>
-            <select value={topic} onChange={(e) => pick({ topic: e.target.value, subtopic: "" })}>
+            <select
+              value={topic}
+              onChange={(e) => pick({ topic: e.target.value, subtopic: '' })}
+            >
               <option value="">সব টপিক</option>
               {topicRows.map((t) => (
-                <option key={t.topic} value={t.topic}>{t.topic}</option>
+                <option key={t.topic} value={t.topic}>
+                  {t.topic}
+                </option>
               ))}
             </select>
           </label>
@@ -178,13 +206,28 @@ export default function PrepRoom({ auth }) {
           {subtopics.length > 0 && (
             <label className="field">
               <span>উপ-টপিক</span>
-              <select value={subtopic} onChange={(e) => pick({ subtopic: e.target.value })}>
+              <select
+                value={subtopic}
+                onChange={(e) => pick({ subtopic: e.target.value })}
+              >
                 <option value="">সব উপ-টপিক</option>
                 {subtopics.map((s) => (
-                  <option key={s} value={s}>{s}</option>
+                  <option key={s} value={s}>
+                    {s}
+                  </option>
                 ))}
               </select>
             </label>
+          )}
+
+          {auth.user && (
+            <button
+              type="button"
+              className="chip saved-link"
+              onClick={() => setParams({ saved: '1' }, { replace: true })}
+            >
+              ★ সংরক্ষিত প্রশ্ন দেখুন
+            </button>
           )}
 
           <label className="toggle">
@@ -205,25 +248,26 @@ export default function PrepRoom({ auth }) {
         ) : questions.length === 0 ? (
           <div className="state">
             {wrongOnly
-              ? "কোনো ভুল প্রশ্ন নেই — এখনো পরীক্ষা দেননি, অথবা সবগুলো সঠিক হয়েছে।"
+              ? 'কোনো ভুল প্রশ্ন নেই — এখনো পরীক্ষা দেননি, অথবা সবগুলো সঠিক হয়েছে।'
               : savedOnly
-                ? "এখনো কোনো প্রশ্ন সংরক্ষণ করা হয়নি। যেকোনো প্রশ্নের পাশে ☆ চাপুন।"
-                : "এই টপিকে এখনো কোনো প্রশ্ন যোগ করা হয়নি।"}
+                ? 'এখনো কোনো প্রশ্ন সংরক্ষণ করা হয়নি। যেকোনো প্রশ্নের পাশে ☆ চাপুন।'
+                : 'এই টপিকে এখনো কোনো প্রশ্ন যোগ করা হয়নি।'}
           </div>
         ) : (
           <>
             {!auth.unlocked && (
               <p className="locked-note">
-                লগইন ছাড়া মোট {bn(GUEST_QUESTION_LIMIT)}টি প্রশ্ন দেখা যায়।{" "}
-                <Link to="/login">অনুমোদিত নম্বরে লগইন করুন</Link> — পুরো
-                প্রশ্নব্যাংক খুলে যাবে।
+                লগইন ছাড়া মোট {bn(GUEST_QUESTION_LIMIT)}টি প্রশ্ন দেখা যায়।{' '}
+                <Link to="/login">লগইন করুন</Link> — পুরো প্রশ্নব্যাংক পেতে
+                অ্যাডমিনের কাছ থেকে অ্যাক্সেস নিন।
               </p>
             )}
 
             <p className="prep-count">
-              {bn(from + 1)}–{bn(Math.min(to, questions.length))} / {bn(questions.length)}টি প্রশ্ন
+              {bn(from + 1)}–{bn(Math.min(to, questions.length))} /{' '}
+              {bn(questions.length)}টি প্রশ্ন
               {topic ? ` · ${topic}` : ` · ${SUBJECT_LABEL[subject]}`}
-              {subtopic ? ` · ${subtopic}` : ""}
+              {subtopic ? ` · ${subtopic}` : ''}
             </p>
 
             {shown.map((q, i) => {
@@ -234,21 +278,29 @@ export default function PrepRoom({ auth }) {
                   <div className="rev-tag rev-tag-row">
                     <span>
                       {q.topic}
-                      {q.subtopic ? ` · ${q.subtopic}` : ""} · {DIFFICULTY_LABEL[q.difficulty]}
+                      {q.subtopic ? ` · ${q.subtopic}` : ''} ·{' '}
+                      {DIFFICULTY_LABEL[q.difficulty]}
                       <ExamTag exam={q.exam} />
                     </span>
-                    <BookmarkButton
-                      id={q.id}
-                      onChange={(id, on) => {
-                        // In the saved-only view an un-saved question no longer
-                        // belongs on screen.
-                        if (savedOnly && !on) {
-                          setQuestions((rows) => rows.filter((r) => r.id !== id));
-                        }
-                      }}
-                    />
+                    {auth.user && (
+                      <BookmarkButton
+                        id={q.id}
+                        onChange={(id, on) => {
+                          // In the saved-only view an un-saved question no longer
+                          // belongs on screen.
+                          if (savedOnly && !on) {
+                            setQuestions((rows) =>
+                              rows.filter((r) => r.id !== id),
+                            );
+                          }
+                        }}
+                      />
+                    )}
                   </div>
-                  <h2 className="stem" style={{ fontSize: 17, marginBottom: 12 }}>
+                  <h2
+                    className="stem"
+                    style={{ fontSize: 17, marginBottom: 12 }}
+                  >
                     {bn(from + i + 1)}. {q.stem}
                   </h2>
 
@@ -256,7 +308,7 @@ export default function PrepRoom({ auth }) {
                     {q.options.map((text, j) => (
                       <div
                         key={j}
-                        className={`opt${open && j === q.answer ? " correct" : ""}`}
+                        className={`opt${open && j === q.answer ? ' correct' : ''}`}
                       >
                         <span className="bubble">{marks[j]}</span>
                         <span>{text}</span>
@@ -265,7 +317,7 @@ export default function PrepRoom({ auth }) {
                   </div>
 
                   {open ? (
-                    <div className="expl"><b>ব্যাখ্যা:</b> {q.explanation}</div>
+                    <Explanation text={q.explanation} subject={q.subject} />
                   ) : (
                     <button
                       type="button"
@@ -293,19 +345,21 @@ export default function PrepRoom({ auth }) {
             </button>
 
             {pageWindow.map((n, i) =>
-              n === "…" ? (
-                <span className="pg-gap" key={`gap-${i}`}>…</span>
+              n === '…' ? (
+                <span className="pg-gap" key={`gap-${i}`}>
+                  …
+                </span>
               ) : (
                 <button
                   type="button"
                   key={n}
                   className="pg num"
-                  aria-current={n === safePage ? "page" : undefined}
+                  aria-current={n === safePage ? 'page' : undefined}
                   onClick={() => goToPage(n)}
                 >
                   {bn(n)}
                 </button>
-              )
+              ),
             )}
 
             <button
@@ -323,12 +377,14 @@ export default function PrepRoom({ auth }) {
             but not on colour, which renders the label white on white. */}
         <div className="prep-cta">
           <Link to="/start">
-            <button type="button" className="cta">পড়া হয়েছে — পরীক্ষা দিন</button>
+            <button type="button" className="cta">
+              পড়া হয়েছে — পরীক্ষা দিন
+            </button>
           </Link>
         </div>
       </div>
 
-      <SiteFooter />
+      <SiteFooter auth={auth} />
     </>
   );
 }
@@ -345,9 +401,9 @@ function buildPageWindow(current, count) {
   const start = Math.max(2, current - 1);
   const end = Math.min(count - 1, current + 1);
 
-  if (start > 2) out.push("…");
+  if (start > 2) out.push('…');
   for (let n = start; n <= end; n++) out.push(n);
-  if (end < count - 1) out.push("…");
+  if (end < count - 1) out.push('…');
   out.push(count);
   return out;
 }

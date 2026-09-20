@@ -9,6 +9,34 @@ import { api } from "@/api";
  * retried, because a candidate on a flaky connection who loses their answers
  * does not come back.
  */
+/**
+ * The last finished exam, so the result and review pages survive a reload.
+ * History (src/lib/history.js) keeps only the summary; this keeps the paper,
+ * the answers and the key until the next exam starts. It holds the answer
+ * key, but so does the bank in `local` mode, and it is this candidate's own
+ * finished paper — nothing they have not already been shown.
+ */
+const LAST_KEY = "bdje.lastResult";
+
+function readLast() {
+  try {
+    const raw = localStorage.getItem(LAST_KEY);
+    const saved = raw ? JSON.parse(raw) : null;
+    return saved?.result?.questions && saved?.attempt ? saved : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeLast(value) {
+  try {
+    if (value) localStorage.setItem(LAST_KEY, JSON.stringify(value));
+    else localStorage.removeItem(LAST_KEY);
+  } catch {
+    // Quota or private mode: the result still shows this session.
+  }
+}
+
 export function useAttempt() {
   const [attempt, setAttempt] = useState(null);
   const [answers, setAnswers] = useState({});
@@ -42,7 +70,18 @@ export function useAttempt() {
       } catch {
         // No resumable attempt, or storage is unavailable. Start fresh.
       }
-      if (!cancelled) setStatus("idle");
+      if (cancelled) return;
+      // No exam in progress — but maybe one just finished before a reload.
+      const last = readLast();
+      if (last) {
+        submitted.current = true;
+        setAttempt(last.attempt);
+        setAnswers(last.result.answers ?? {});
+        setResult(last.result);
+        setStatus("done");
+        return;
+      }
+      setStatus("idle");
     })();
     return () => {
       cancelled = true;
@@ -86,6 +125,7 @@ export function useAttempt() {
       setPending(0);
       setAnswers({});
       setResult(null);
+      writeLast(null);
       setAttempt(data);
       setStatus("ready");
       return data;
@@ -128,6 +168,7 @@ export function useAttempt() {
       try {
         const data = await api.submitAttempt({ attemptId: attempt.attemptId, auto });
         setResult(data);
+        writeLast({ attempt, result: data });
         setStatus("done");
         return data;
       } catch (e) {
@@ -152,6 +193,7 @@ export function useAttempt() {
     setAnswers({});
     setAttempt(null);
     setResult(null);
+    writeLast(null);
     setStatus("idle");
   }, []);
 

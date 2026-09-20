@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import SiteHeader from "@/components/SiteHeader.jsx";
 import SiteFooter from "@/components/SiteFooter.jsx";
 import {
@@ -36,6 +36,11 @@ export default function Profile({ auth }) {
     URL.revokeObjectURL(url);
   }
 
+  // Accounts only. A guest's results still live in this browser and will
+  // appear here the moment they register or log in.
+  if (auth.ready && !auth.user) return <Navigate to="/login?next=/profile" replace />;
+  if (!auth.user) return <div className="state">লোড হচ্ছে…</div>;
+
   return (
     <>
       <SiteHeader auth={auth} />
@@ -44,9 +49,10 @@ export default function Profile({ auth }) {
         <div className="hero" style={{ padding: "34px 0 6px" }}>
           <h1 style={{ fontSize: 28 }}>প্রোফাইল</h1>
           <p>
-            {auth.user
-              ? `${auth.user.phone} — পুরো প্রশ্নব্যাংক খোলা আছে।`
-              : `লগইন করা নেই — ${bn(GUEST_QUESTION_LIMIT)}টি প্রশ্ন ব্যবহার করা যাচ্ছে।`}
+            {auth.user.name ?? auth.user.email ?? auth.user.phone} —{" "}
+            {auth.unlocked
+              ? "প্রিমিয়াম: পুরো প্রশ্নব্যাংক খোলা আছে।"
+              : `ফ্রি: ${bn(GUEST_QUESTION_LIMIT)}টি প্রশ্ন ব্যবহার করা যাচ্ছে। প্রিমিয়ামের জন্য অ্যাডমিনের সাথে যোগাযোগ করুন।`}
           </p>
         </div>
 
@@ -237,7 +243,7 @@ export default function Profile({ auth }) {
         )}
       </div>
 
-      <SiteFooter />
+      <SiteFooter auth={auth} />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { buildPaper, supply, isServable } from "@/lib/paper.js";
-import { visibleQuestions, GUEST_QUESTION_LIMIT } from "@/lib/access.js";
+import { GUEST_QUESTION_LIMIT } from "@/lib/access.js";
+import { loadBank } from "@/lib/bank.js";
 import { grade } from "@/lib/scoring.js";
 
 /**
@@ -46,29 +47,11 @@ function readLive() {
   }
 }
 
-// Loaded on demand so the bank becomes its own chunk. In http mode it is never
-// requested at all, which keeps the first load small on a 3G connection.
-let bankPromise;
-const getBank = () =>
-  (bankPromise ??= import("@/data/question-bank.json").then((m) => m.default));
-
 /**
- * The bank as this visitor may see it. A signed-out visitor gets a stable
- * proportional subset; signing in with an allowed number returns the whole
- * thing. Memoised per lock state so the subset is computed once.
+ * The bank as this visitor may see it: the bundled guest subset, or the full
+ * bank from Firestore for an unlocked account. See src/lib/bank.js.
  */
-const gated = new Map();
-async function bankFor(unlocked) {
-  const key = unlocked ? "all" : "guest";
-  if (!gated.has(key)) {
-    const bank = await getBank();
-    gated.set(
-      key,
-      unlocked ? bank : { ...bank, questions: visibleQuestions(bank.questions, false) }
-    );
-  }
-  return gated.get(key);
-}
+const bankFor = (unlocked) => loadBank(Boolean(unlocked));
 
 export const localApi = {
   async profiles({ unlocked = false } = {}) {

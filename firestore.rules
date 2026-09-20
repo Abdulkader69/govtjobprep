@@ -1,0 +1,64 @@
+rules_version = '2';
+
+// Deploy with: npx firebase-cli deploy --only firestore:rules
+// (or paste into Firebase console → Firestore → Rules).
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+    function isSelf(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+    // Super admins are the documents in /admins, keyed by uid. Created only
+    // from the Firebase console — nothing in the app can write here.
+    function isAdmin() {
+      return signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    match /admins/{uid} {
+      allow read: if isSelf(uid) || isAdmin();
+      allow write: if false;
+    }
+
+    // Profile. The owner may read and edit it, but never `plan` or `disabled`
+    // — those decide what the account can do, and only an admin sets them.
+    match /users/{uid} {
+      allow read: if isSelf(uid) || isAdmin();
+      allow create: if isSelf(uid)
+                    && !("plan" in request.resource.data)
+                    && !("disabled" in request.resource.data);
+      allow update: if (isSelf(uid)
+                        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(["plan", "disabled"]))
+                    || isAdmin();
+      // Admins may remove a profile after deleting the account in
+      // Authentication → Users, so no orphan documents accumulate.
+      allow delete: if isAdmin();
+    }
+
+    // One document per account: which device is signed in. The account may
+    // overwrite it (that is how a second device takes over); an admin may
+    // read all of them and delete one to force that device out.
+    match /sessions/{uid} {
+      allow read: if isSelf(uid) || isAdmin();
+      allow write: if isSelf(uid);
+      allow delete: if isSelf(uid) || isAdmin();
+    }
+
+    // The full question bank. Readable only by accounts an admin has put on
+    // the full plan (and by admins); written only by `npm run bank:upload`,
+    // which signs in as an admin. Guests never see these documents — their
+    // 500 questions ship inside the app.
+    match /bank/{docId} {
+      allow read: if isAdmin()
+                  || (signedIn()
+                      && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.plan == "full");
+      allow write: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

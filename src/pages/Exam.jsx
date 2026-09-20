@@ -65,7 +65,7 @@ export default function Exam({ attempt, auth }) {
       <>
         <SiteHeader auth={auth} minimal />
         <div className="wrap"><div className="state">পরীক্ষা ফিরিয়ে আনা হচ্ছে…</div></div>
-        <SiteFooter />
+        <SiteFooter auth={auth} />
       </>
     );
   }
@@ -140,7 +140,7 @@ export default function Exam({ attempt, auth }) {
         />
       )}
 
-      <SiteFooter />
+      <SiteFooter auth={auth} />
 
       {confirming && (
         <ConfirmSubmit

@@ -6,6 +6,7 @@
   "description": "MCQ practice app for Bangladesh government job exams (grade 11-20)",
   "scripts": {
     "bank": "node scripts/build-bank.mjs",
+    "bank:upload": "npm run bank && node scripts/upload-bank.mjs",
     "pages": "node scripts/pdf-to-pages.mjs",
     "import": "node scripts/import-draft.mjs",
     "dev": "npm run bank && vite",
@@ -17,6 +18,7 @@
     "validate": "node scripts/validate-bank.mjs"
   },
   "dependencies": {
+    "firebase": "^12.19.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2"

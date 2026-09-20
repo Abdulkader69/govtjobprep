@@ -1,11 +1,9 @@
 import { describe, it, expect } from "vitest";
 import {
   normalizePhone,
-  isAllowedPhone,
   guestQuestionIds,
   visibleQuestions,
   GUEST_QUESTION_LIMIT,
-  ALLOWED_PHONES,
 } from "../access.js";
 import { buildPaper } from "../paper.js";
 import bank from "../../data/question-bank.json";
@@ -27,26 +25,6 @@ describe("normalizePhone", () => {
   it("returns an empty string for junk rather than throwing", () => {
     expect(normalizePhone(null)).toBe("");
     expect(normalizePhone("abc")).toBe("");
-  });
-});
-
-describe("isAllowedPhone", () => {
-  it("admits every configured number", () => {
-    for (const phone of ALLOWED_PHONES) expect(isAllowedPhone(phone)).toBe(true);
-  });
-
-  it("rejects an unknown number", () => {
-    expect(isAllowedPhone("01911111111")).toBe(false);
-  });
-
-  it("rejects empty input, so a blank form never unlocks anything", () => {
-    expect(isAllowedPhone("")).toBe(false);
-    expect(isAllowedPhone(null)).toBe(false);
-  });
-
-  it("is not fooled by a prefix or suffix of an allowed number", () => {
-    expect(isAllowedPhone("0174811414")).toBe(false);
-    expect(isAllowedPhone("017481141440")).toBe(false);
   });
 });
 

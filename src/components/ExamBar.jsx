@@ -4,7 +4,11 @@ export default function ExamBar({ left, from, to, total, answered, onOpenGrid, o
   return (
     <div className="bar">
       <div className="wrap">
+        {/* Three cells: progress left, clock centred, grid button right. */}
         <div className="bar-in">
+          <span className="count">
+            {from === to ? bn(from) : `${bn(from)}–${bn(to)}`}/{bn(total)} · উত্তর দেওয়া {bn(answered)}
+          </span>
           <span
             className={`clock${left <= 120 ? " low" : ""}`}
             role="timer"
@@ -12,9 +16,6 @@ export default function ExamBar({ left, from, to, total, answered, onOpenGrid, o
             aria-label={`বাকি সময় ${clock(left)}`}
           >
             {clock(left)}
-          </span>
-          <span className="count">
-            {from === to ? bn(from) : `${bn(from)}–${bn(to)}`}/{bn(total)} · উত্তর দেওয়া {bn(answered)}
           </span>
           <button type="button" className="ghost" onClick={onOpenGrid}>
             প্রশ্নপত্র

@@ -1,14 +1,13 @@
 import { allocate } from "./paper.js";
 
 /**
- * Phone numbers that unlock the whole bank.
+ * Who sees what.
  *
- * This is a convenience gate, not a security boundary. In `local` mode the
- * entire bank — answers included — is shipped to the browser, and this list is
- * in the same bundle. Anyone who opens devtools sees both. Moving the limit
- * server-side is the only way to make it mean anything; see docs/api-contract.md.
+ * A signed-out visitor gets the stable guest subset below, which is the only
+ * bank the production bundle contains. An account whose Firestore profile has
+ * `plan: "full"` (set by a super admin) fetches the whole bank from
+ * Firestore, where rules refuse everyone else — see src/lib/bank.js.
  */
-export const ALLOWED_PHONES = ["01748114144", "01733634538"];
 
 /** Questions a signed-out visitor may reach. */
 export const GUEST_QUESTION_LIMIT = 500;
@@ -18,19 +17,14 @@ const KEY_SEP = "::";
 
 /**
  * Reduce a typed number to bare digits so the same phone entered as
- * "+880 1748-114144", "8801748114144" or "01748114144" all match.
+ * "+880 1748-114144", "8801748114144" or "01748114144" all match. Used for
+ * the optional phone on a profile and for phone-OTP sign-in.
  */
 export function normalizePhone(input) {
   const digits = String(input ?? "").replace(/\D/g, "");
   if (digits.startsWith("880")) return "0" + digits.slice(3);
   if (digits.length === 10 && digits.startsWith("1")) return "0" + digits;
   return digits;
-}
-
-export function isAllowedPhone(input) {
-  const phone = normalizePhone(input);
-  if (!phone) return false;
-  return ALLOWED_PHONES.some((allowed) => normalizePhone(allowed) === phone);
 }
 
 /**
