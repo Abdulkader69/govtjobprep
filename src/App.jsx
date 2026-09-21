@@ -12,7 +12,6 @@ import Result from "@/pages/Result.jsx";
 import Review from "@/pages/Review.jsx";
 import { useAttempt } from "@/lib/useAttempt.js";
 import { useAuth } from "@/lib/useAuth.js";
-import AskAdmin from "@/components/AskAdmin.jsx";
 
 export default function App() {
   // One attempt lives above the router so navigating between result and review
@@ -21,7 +20,6 @@ export default function App() {
   const auth = useAuth();
 
   return (
-    <>
     <Routes>
       <Route path="/" element={<Home auth={auth} attempt={attempt} />} />
       <Route path="/login" element={<Login auth={auth} />} />
@@ -36,7 +34,5 @@ export default function App() {
       <Route path="/review" element={<Review attempt={attempt} auth={auth} />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
-    <AskAdmin auth={auth} />
-    </>
   );
 }

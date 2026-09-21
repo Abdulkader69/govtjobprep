@@ -659,9 +659,10 @@ button {
 .who-name {
   font-weight: 600;
 }
-/* Icon-only sign-out. Square, same height as the other nav buttons, and it
-   turns seal-red on hover so the intent is unmistakable. */
-.site-nav .signout {
+/* Icon-only nav buttons (admin, profile, sign-out). Square, same height as
+   the text buttons. Admin and profile darken to ink on hover; sign-out turns
+   seal-red so the intent is unmistakable. */
+.site-nav .iconbtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -674,6 +675,13 @@ button {
     color 0.15s,
     border-color 0.15s,
     background 0.15s;
+}
+.site-nav .iconbtn:hover,
+.site-nav .iconbtn:focus-visible {
+  color: var(--ink);
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+  outline: none;
 }
 .site-nav .signout:hover,
 .site-nav .signout:focus-visible {
@@ -1363,7 +1371,9 @@ button {
   font-size: 16px;
   font-weight: 650;
 }
-
+.card .fineprint {
+  text-align: left;
+}
 @media (max-width: 860px) {
   .hero-grid {
     grid-template-columns: 1fr;
@@ -1409,9 +1419,6 @@ button {
   .site-foot-in {
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-  .logo-text small {
-    display: none;
   }
   .site-nav .ghost {
     padding: 0 11px;
@@ -2071,57 +2078,56 @@ button {
 }
 .or::before,
 .or::after {
-  content: "";
+  content: '';
   flex: 1;
   border-top: 1px solid var(--rule);
 }
 
-/* ---- floating "message the admin" ---- */
-.ask-admin {
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  z-index: 40;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.ask-admin-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 16px;
-  border-radius: 999px;
+/* ---- notice strip above the header ---- */
+.notice-bar {
   background: var(--ink);
   color: #fff;
   font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 6px 18px rgba(27, 42, 74, 0.28);
-  transition: transform 0.15s, box-shadow 0.15s;
+  line-height: 1.5;
 }
-.ask-admin-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 22px rgba(27, 42, 74, 0.34);
+.notice-bar-in {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
-.ask-admin-x {
+.notice-bar a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+.notice-bar small {
+  opacity: 0.8;
+  font-size: 14px;
+}
+.notice-bar-x {
+  flex: none;
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 1px solid var(--rule);
-  background: var(--card);
-  color: var(--ink-soft);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: #fff;
   font-size: 18px;
   line-height: 1;
   cursor: pointer;
 }
 @media (max-width: 520px) {
-  .ask-admin {
-    right: 12px;
-    bottom: 12px;
-  }
-  .ask-admin-btn span {
+  .notice-bar {
     font-size: 14px;
+  }
+  .notice-bar small {
+    display: none;
   }
 }
 
