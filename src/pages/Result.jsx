@@ -5,6 +5,7 @@ import { Link, Navigate } from "react-router-dom";
 import { bySubject, weakTopics } from "@/lib/scoring.js";
 import { saveAttempt } from "@/lib/history.js";
 import { bn, mark } from "@/lib/bn.js";
+import { usePageMeta } from "@/lib/usePageMeta.js";
 
 function LockIcon() {
   return (
@@ -20,6 +21,7 @@ export default function Result({ attempt, auth }) {
   // Ref, not state: Result re-renders on navigation back from Review, and a
   // second write would duplicate the attempt in history.
   const recorded = useRef(null);
+  usePageMeta("ফলাফল", undefined);
 
   useEffect(() => {
     if (!result || !data) return;

@@ -17,6 +17,7 @@ import { summarise } from '@/lib/history.js';
 import { bookmarkSet } from '@/lib/bookmarks.js';
 import BookmarkButton from '@/components/BookmarkButton.jsx';
 import Explanation from '@/components/Explanation.jsx';
+import { usePageMeta } from "@/lib/usePageMeta.js";
 
 /**
  * Revision, not examination: every question is shown with its key and
@@ -32,6 +33,7 @@ export default function PrepRoom({ auth }) {
   // Drill mode: only the questions this browser has got wrong before.
   const wrongOnly = params.get('wrong') === '1';
   const savedOnly = params.get('saved') === '1';
+  usePageMeta("প্রস্তুতি কক্ষ — উত্তর ও ব্যাখ্যাসহ প্রশ্ন", "বিষয় ও টপিক বেছে নিয়ে প্রতিটি প্রশ্নের সঠিক উত্তর ও ব্যাখ্যা পড়ুন — বাংলা, ইংরেজি, গণিত ও সাধারণ জ্ঞান।");
 
   const [taxonomy, setTaxonomy] = useState(null);
   const [questions, setQuestions] = useState(null);

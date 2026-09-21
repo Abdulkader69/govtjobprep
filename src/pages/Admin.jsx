@@ -7,6 +7,7 @@ import { bankBreakdown, usageEstimate, adminWarnings } from "@/lib/adminStats.js
 import Overview from "./admin/Overview.jsx";
 import Users from "./admin/Users.jsx";
 import Bank from "./admin/Bank.jsx";
+import { usePageMeta } from "@/lib/usePageMeta.js";
 
 const TABS = [
   ["overview", "সারসংক্ষেপ"],
@@ -24,6 +25,7 @@ const TABS = [
  */
 export default function Admin({ auth }) {
   const [params, setParams] = useSearchParams();
+  usePageMeta("অ্যাডমিন", undefined);
   const tab = TABS.some(([k]) => k === params.get("tab")) ? params.get("tab") : "overview";
 
   const [snap, setSnap] = useState(null); // { users, admins, orphanSessions, bank }

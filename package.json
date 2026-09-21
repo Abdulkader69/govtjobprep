@@ -10,12 +10,13 @@
     "pages": "node scripts/pdf-to-pages.mjs",
     "import": "node scripts/import-draft.mjs",
     "dev": "npm run bank && vite",
-    "prebuild": "npm run validate && npm run bank",
+    "prebuild": "npm run validate && npm run bank && npm run seo",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "validate": "node scripts/validate-bank.mjs"
+    "validate": "node scripts/validate-bank.mjs",
+    "seo": "node scripts/build-seo.mjs"
   },
   "dependencies": {
     "firebase": "^12.19.0",

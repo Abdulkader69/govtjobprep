@@ -27,6 +27,7 @@ needed — the default `local` mode grades in the browser.
 | `npm run dev` | Compiles the bank, then starts Vite (proxies `/api` to `localhost:8000`) |
 | `npm run bank` | Compiles `content/` → `src/data/question-bank.json` (full) and `question-bank.guest.json` (the 500 guests see) |
 | `npm run bank:upload` | Rebuilds, then pushes the full bank to Firestore (`bank/`), signing in as an admin |
+| `npm run seo` | Writes `public/sitemap.xml` and `robots.txt` from `VITE_SITE_URL` (runs in prebuild) |
 | `npm run pages` | Splits a scanned PDF into one 300 dpi image per page |
 | `npm run import` | Turns transcribed questions into a `draft` shard |
 | `npm run validate` | Structural checks on the bank; exits non-zero on error |
@@ -51,6 +52,8 @@ Build-time variables in `.env` (copy `.env.example`):
 | `VITE_PHONE_LOGIN` | `false` | Show the phone-OTP login. Needs Firebase's Blaze plan; leave off on Spark |
 | `VITE_SESSION_POLICY` | `replace` | `replace`: a new device signs the old one out. `block`: the new device is refused while the old is signed in |
 | `VITE_SESSION_TTL_DAYS` | `30` | Under `block`, how old a session may be before a new device may take over |
+| `VITE_SITE_URL` | — | Deployed origin, no trailing slash. Baked into canonical/Open Graph URLs, the sitemap and robots.txt |
+| `VITE_ADMIN_MESSENGER` | — | `https://m.me/<name>`; shows the "message the admin" strip to free accounts. Empty hides it |
 | `VITE_BANK_SOURCE` | `firestore` | Where unlocked accounts get the full bank. `bundle` imports the JSON into the build — development only, it makes every question public |
 
 The guest cap (500) lives in [`src/lib/access.js`](src/lib/access.js).
@@ -369,7 +372,8 @@ Both halves are free-tier.
 
 1. Push to GitHub, import the repo at vercel.com. Vite is auto-detected;
    `vercel.json` adds the SPA rewrite.
-2. Settings → Environment Variables → add the same `VITE_*` values as `.env`.
+2. Settings → Environment Variables → add the same `VITE_*` values as `.env`,
+   with `VITE_SITE_URL` set to the Vercel URL (e.g. `https://bd-job-exam.vercel.app`).
    They are baked in at build time, so redeploy after changing them.
 3. Deploy. `npm run build` validates the bank, compiles it and emits `dist/`.
 

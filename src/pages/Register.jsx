@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import SiteHeader from "@/components/SiteHeader.jsx";
 import SiteFooter from "@/components/SiteFooter.jsx";
 import GoogleButton, { OrDivider } from "@/components/GoogleButton.jsx";
+import { usePageMeta } from "@/lib/usePageMeta.js";
 
 /**
  * Registration with either a mobile number or an email as the identity —
@@ -12,6 +13,7 @@ import GoogleButton, { OrDivider } from "@/components/GoogleButton.jsx";
  */
 export default function Register({ auth }) {
   const navigate = useNavigate();
+  usePageMeta("রেজিস্টার", "বিনামূল্যে অ্যাকাউন্ট খুলুন — মোবাইল নম্বর, ইমেইল বা Google দিয়ে।");
   const location = useLocation();
   const next = new URLSearchParams(location.search).get("next") || "/start";
   const [via, setVia] = useState("phone");

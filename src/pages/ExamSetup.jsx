@@ -7,6 +7,7 @@ import { api } from "@/api";
 import { BANDS, SUBJECTS, COUNT_OPTIONS, DEFAULT_COUNT } from "@/lib/constants.js";
 import { bn } from "@/lib/bn.js";
 import { GUEST_QUESTION_LIMIT } from "@/lib/access.js";
+import { usePageMeta } from "@/lib/usePageMeta.js";
 
 /**
  * Exam setup for both modes.
@@ -16,6 +17,7 @@ import { GUEST_QUESTION_LIMIT } from "@/lib/access.js";
  */
 export default function ExamSetup({ attempt, auth }) {
   const navigate = useNavigate();
+  usePageMeta("মডেল টেস্ট শুরু করুন", "গ্রেড ও প্রশ্নসংখ্যা বেছে নিন — আসল সময়সীমা ও নেগেটিভ মার্কিংসহ পূর্ণ মডেল টেস্ট বা বিষয়ভিত্তিক পরীক্ষা।");
   const [params, setParams] = useSearchParams();
   const mode = params.get("mode") === "topic" ? "topic" : "full";
 

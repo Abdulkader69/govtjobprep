@@ -14,11 +14,13 @@ import { SUBJECT_LABEL, BANDS } from "@/lib/constants.js";
 import { GUEST_QUESTION_LIMIT } from "@/lib/access.js";
 import { listBookmarks } from "@/lib/bookmarks.js";
 import { bn, mark } from "@/lib/bn.js";
+import { usePageMeta } from "@/lib/usePageMeta.js";
 
 const MODE_LABEL = { full: "পূর্ণ মডেল টেস্ট", topic: "বিষয়ভিত্তিক", demo: "ডেমো" };
 
 export default function Profile({ auth }) {
   const [version, setVersion] = useState(0);
+  usePageMeta("প্রোফাইল", undefined);
   const [confirming, setConfirming] = useState(false);
 
   const attempts = useMemo(() => listAttempts(), [version]);

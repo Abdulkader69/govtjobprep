@@ -8,6 +8,7 @@ import { api } from "@/api";
 import { bn } from "@/lib/bn.js";
 import { DEMO_COUNT, SUBJECTS } from "@/lib/constants.js";
 import { GUEST_QUESTION_LIMIT } from "@/lib/access.js";
+import { usePageMeta } from "@/lib/usePageMeta.js";
 
 const COMPARE = [
   ["প্রশ্নের ধরন", "পুরোনো প্রশ্নের ধাঁচে, গ্রেড অনুযায়ী", "এক বই সবার জন্য এক"],
@@ -49,6 +50,7 @@ function PlanCell({ value }) {
 export default function Home({ auth, attempt }) {
   const navigate = useNavigate();
   const [stats, setStats] = useState(null);
+  usePageMeta(undefined, undefined);
 
   // Advertised from the live bank, so the page cannot overstate what it holds.
   useEffect(() => {

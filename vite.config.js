@@ -1,6 +1,12 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { fileURLToPath, URL } from "node:url";
+import { siteUrl } from "./scripts/site-url.mjs";
+
+// Resolve the deployed origin once, before Vite reads env: an explicit
+// VITE_SITE_URL wins, otherwise Vercel's production domain, otherwise empty.
+// Set on process.env so index.html's %VITE_SITE_URL% sees it too.
+process.env.VITE_SITE_URL = siteUrl();
 
 export default defineConfig({
   plugins: [react()],

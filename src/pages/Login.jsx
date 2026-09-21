@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import SiteHeader from "@/components/SiteHeader.jsx";
 import SiteFooter from "@/components/SiteFooter.jsx";
 import GoogleButton, { OrDivider } from "@/components/GoogleButton.jsx";
+import { usePageMeta } from "@/lib/usePageMeta.js";
 import { GUEST_QUESTION_LIMIT } from "@/lib/access.js";
 import { bn } from "@/lib/bn.js";
 
@@ -13,6 +14,7 @@ import { bn } from "@/lib/bn.js";
  */
 export default function Login({ auth }) {
   const navigate = useNavigate();
+  usePageMeta("লগইন", undefined);
   const location = useLocation();
   const next = new URLSearchParams(location.search).get("next") || "/start";
   const [tab, setTab] = useState("email");
